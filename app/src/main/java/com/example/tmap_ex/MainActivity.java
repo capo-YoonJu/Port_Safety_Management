@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
     private TMapGpsManager tmapgps = null;
     private TMapView tmapview = null;
     private TMapPoint currentPoint = null;
-    private static String mApiKey = "l7xx54970a28096b40faaf92b3017b524f8c";
+    private static String mApiKey = "** key **";
     private static int mMarkerID;
     private String mJsonString;
     private static final String TAG_JSON="webnautes";
@@ -173,14 +173,12 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
 
                 switch (item.getItemId()) {
                     case R.id.menu1:
-                        //Toast.makeText(mContext, "지도",Toast.LENGTH_LONG).show();
                         Intent intent0 = new Intent(getApplicationContext(), MainActivity.class);
                         intent0.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent0);
                         break;
 
                     case R.id.menu2:
-                        //Toast.makeText(mContext, "신고",Toast.LENGTH_LONG).show();
                         Intent intent1 = new Intent(getApplicationContext(), ReportActivity.class);
                         try{
                             intent1.putExtra("cur_latitude",currentPoint.getLatitude());
@@ -192,7 +190,6 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
                         }
                         break;
                     case R.id.menu3:
-                        //Toast.makeText(mContext, "통계",Toast.LENGTH_LONG).show();
                         Intent intent2 = new Intent(getApplicationContext(), StatsActivity.class);
                         try{
                             intent2.putExtra("cur_latitude",currentPoint.getLatitude());
@@ -234,7 +231,6 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
             @Override
             public boolean onPressUpEvent(ArrayList<TMapMarkerItem> arrayList, ArrayList<TMapPOIItem> arrayList1, TMapPoint tMapPoint, PointF pointF) {
                 for (TMapMarkerItem item : arrayList) {
-                    //Toast.makeText(getApplicationContext(), item.getID(), Toast.LENGTH_SHORT).show();
                 }
                 Log.d("EndTest", "EndTest");
                 return false;
@@ -275,7 +271,6 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
                         builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                //Toast.makeText(getApplicationContext(),"예를 선택했습니다.",Toast.LENGTH_LONG).show();
                                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
@@ -283,7 +278,6 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
                                             JSONObject jsonResponse = new JSONObject(response);
                                             boolean success = jsonResponse.getBoolean("success");
                                             if(success) {
-                                                //Toast.makeText(mContext, "성공", Toast.LENGTH_SHORT).show();
                                                 targetMarker.setCanShowCallout(false);
                                                 onStart();
                                             }
@@ -311,7 +305,6 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
                         builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                //Toast.makeText(getApplicationContext(),"아니오를 선택했습니다.",Toast.LENGTH_LONG).show();
                             }
                         });
                         builder.show();
@@ -337,7 +330,6 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
                                             JSONObject jsonResponse = new JSONObject(response);
                                             boolean success = jsonResponse.getBoolean("success");
                                             if(success) {
-                                                //Toast.makeText(mContext, "성공", Toast.LENGTH_SHORT).show();
                                                 targetMarker.setCanShowCallout(false);
                                                 onStart();
                                             }
@@ -365,7 +357,6 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
                         builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                //Toast.makeText(getApplicationContext(),"아니오를 선택했습니다.",Toast.LENGTH_LONG).show();
                             }
                         });
                         builder.show();
@@ -402,9 +393,9 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
             tmapview.removeAllMarkerItem();
         }
         GetData task = new GetData();
-        task.execute("http://ec2-18-216-239-216.us-east-2.compute.amazonaws.com/ReportPointsRequest.php");
+        task.execute("** php **");
         GetGasData gasTask = new GetGasData();
-        gasTask.execute("http://ec2-18-216-239-216.us-east-2.compute.amazonaws.com/GasValueRequest.php");
+        gasTask.execute("** php **");
         //나중에 센서 위치 가져오고 지도에 표시하는 태스크 execute하는 코드 넣으면 됨.
     }
 
@@ -426,14 +417,11 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            //mTextViewResult.setText(result);
             Log.d("report", "response  - " + result);
 
             if (result == null){
-                //mTextViewResult.setText(errorString);
-            }
-            else {
-
+                mTextViewResult.setText(errorString);
+            } else {
                 mJsonString = result;
                 showResult();
             }
@@ -521,7 +509,6 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
             Log.d("gas value", "response  - " + result);
 
             if (result == null){
-                //mTextViewResult.setText(errorString);
             }
             else {
 
@@ -770,7 +757,7 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
         @Override
         protected  void onPreExecute() {
             try {
-                target = "http://ec2-18-216-239-216.us-east-2.compute.amazonaws.com/token_request.php";
+                target = "** php **";
                 Log.d(TAG,"try");
             } catch (Exception e) {
                 e.printStackTrace();
