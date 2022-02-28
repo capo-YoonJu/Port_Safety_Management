@@ -69,7 +69,7 @@ public class ReportActivity extends AppCompatActivity {
     private boolean m_bTrackingMode = true;
     private TMapGpsManager tmapgps = null;
     private TMapView tmapview = null;
-    private static String mApiKey = "l7xx54970a28096b40faaf92b3017b524f8c";
+    private static String mApiKey = " ** key **";
     private TMapPoint currentPoint = null;
     private TMapPoint reportPoint = null;
     private double cur_latitude, cur_longitude;
@@ -127,7 +127,6 @@ public class ReportActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.menu1:
-                        //Toast.makeText(mContext, "지도",Toast.LENGTH_LONG).show();
                         Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent1);
@@ -137,7 +136,6 @@ public class ReportActivity extends AppCompatActivity {
                         break;
 
                     case R.id.menu3:
-                        //Toast.makeText(mContext, "통계",Toast.LENGTH_LONG).show();
                         Intent intent3 = new Intent(getApplicationContext(), StatsActivity.class);
                         try{
                             intent3.putExtra("cur_latitude",latitude);
@@ -237,13 +235,11 @@ public class ReportActivity extends AppCompatActivity {
                                 finish();
                             }
                             else {
-                                /*
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ReportActivity.this);
                                 dialog = builder.setMessage("변경에 실패했습니다.")
                                         .setNegativeButton("확인", null)
                                         .create();
                                 dialog.show();
-                                 */
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -254,7 +250,6 @@ public class ReportActivity extends AppCompatActivity {
                 Response.ErrorListener errorListener = new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //Toast.makeText(getApplicationContext(),"디비 처리시 에러발생!",Toast.LENGTH_SHORT).show();
                         Log.d("TAG", String.valueOf(error));
                         return;
                     }
@@ -310,8 +305,6 @@ public class ReportActivity extends AppCompatActivity {
                         // Log and toast
                         String msg = getString(R.string.msg_token_fmt, token_id);
                         Log.d(TAG, msg);
-                        //Toast.makeText(ReportActivity.this, token_id, Toast.LENGTH_SHORT).show();
-                        //finish();
                     }
                 });
     }
@@ -323,7 +316,7 @@ public class ReportActivity extends AppCompatActivity {
         @Override
         protected  void onPreExecute() {
             try {
-                target = "http://ec2-18-216-239-216.us-east-2.compute.amazonaws.com/token_request.php";
+                target = "** php **";
                 Log.d(TAG,"try");
             } catch (Exception e) {
                 e.printStackTrace();
