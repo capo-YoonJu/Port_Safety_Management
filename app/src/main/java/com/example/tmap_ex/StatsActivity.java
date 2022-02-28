@@ -52,7 +52,7 @@ public class StatsActivity extends AppCompatActivity {
     private ActionBar actionBar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-    private static String mApiKey = "l7xx54970a28096b40faaf92b3017b524f8c";
+    private static String mApiKey = "** key **";
     private TMapData tmapdata;
     private TMapPoint tMapPoint;
     private String address;
@@ -98,14 +98,12 @@ public class StatsActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.menu1:
-                        //Toast.makeText(mContext, "지도",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
 
                     case R.id.menu2:
-                        //Toast.makeText(mContext, "신고",Toast.LENGTH_LONG).show();
                         Intent intent1 = new Intent(getApplicationContext(), ReportActivity.class);
                         try{
                             intent1.putExtra("cur_latitude",latitude);
@@ -155,9 +153,6 @@ public class StatsActivity extends AppCompatActivity {
 
         list_itemArrayList = new ArrayList<Report_item_list>();
         todayList_itemArrayList = new ArrayList<Report_item_list>();
-        //reportItemListAdapter = new ReportItemListAdapter(StatsActivity.this,list_itemArrayList);
-        //reportReclyclerView.setAdapter(reportItemListAdapter);
-
     }
 
     // MySQL에서 데이터 받아오기
@@ -168,10 +163,9 @@ public class StatsActivity extends AppCompatActivity {
         @Override
         protected  void onPreExecute() {
             try {
-                target = "http://ec2-18-216-239-216.us-east-2.compute.amazonaws.com/StatsReportRequest.php";
+                target = " ** php **";
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.d("printStackTrace","왜안돼");
             }
         }
 
@@ -202,8 +196,6 @@ public class StatsActivity extends AppCompatActivity {
                     Log.d("report_date:", report_date.substring(0,10));
                     report_state = object.getString("report_state");
                     resolved_date = object.getString("resolved_date");
-
-                    // category_image 지정
 
                     // report_category 지정
                     switch (report_category) {
@@ -268,10 +260,8 @@ public class StatsActivity extends AppCompatActivity {
                     count++;
                 }
                 Log.d("size:", String.valueOf(list_itemArrayList.size()));
-                // reportItemListAdapter = new ReportItemListAdapter(getApplicationContext(),list_itemArrayList);
                 reportItemListAdapter = new ReportItemListAdapter(StatsActivity.this, todayList_itemArrayList);
                 reportListView.setAdapter(reportItemListAdapter);
-                //reportItemListAdapter.notifyDataSetChanged();
                 calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                     @Override
                     public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -292,7 +282,6 @@ public class StatsActivity extends AppCompatActivity {
                             StringdayOfMonth = tSdayOfMonth;
                         }
                         sDate = year+"-"+StringMonth+"-"+StringdayOfMonth;
-                        //Toast.makeText(getApplicationContext(), year+"-"+StringMonth+"-"+StringdayOfMonth, Toast.LENGTH_SHORT).show();
 
                         int count = 0;
                         newList_itemArrayList = new ArrayList<Report_item_list>();
@@ -309,7 +298,6 @@ public class StatsActivity extends AppCompatActivity {
                         }
                         reportItemListAdapter = new ReportItemListAdapter(StatsActivity.this, newList_itemArrayList);
                         reportListView.setAdapter(reportItemListAdapter);
-                        //noReport.setText("신고된 사고가 없습니다.");
                         if(newList_itemArrayList.size()==0) {
                             noReport.setText("신고된 사고가 없습니다.");
                         }else{
@@ -352,7 +340,7 @@ public class StatsActivity extends AppCompatActivity {
                 return stringBuilder.toString().trim();
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.d("printStackTrace","왜안돼3");            }
+            }
             return null;
         }
 
